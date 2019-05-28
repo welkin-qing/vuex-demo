@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="node_modules/vue/dist/vue.min.js"></script>
+  <style>
+    .no-mode-translate-demo-wrapper {
+      position: relative;
+      height: 18px;
+    }
+  
+    .no-mode-translate-demo-wrapper button {
+      position: absolute;
+    }
+  
+    .no-mode-translate-fade-enter-active,
+    .no-mode-translate-fade-leave-active {
+      transition: all 1s;
+    }
+  
+    .no-mode-translate-fade-enter,
+    .no-mode-translate-fade-leave-active {
+      opacity: 0;
+    }
+  
+    .no-mode-translate-fade-enter {
+      transform: translateX(31px);
+    }
+  
+    .no-mode-translate-fade-leave-active {
+      transform: translateX(-31px);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="no-mode-translate-demo-wrapper">
+      <transition name="no-mode-translate-fade">
+        <button v-if="on" key="on" @click="on = false"> 
+          on
+        </button>
+        <button v-else="" key="off" @click="on = true">
+          off
+        </button>
+      </transition>
+
+    </div>
+  </div>
+  <script>
+     var vue = new Vue({
+      el : '#app',
+      data : {  
+        on: false,
+      },
+      methods : { }    
+    });
+  </script>
+</body>
+
+</html>
