@@ -11,12 +11,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(shop,index) in shoplist">
+        <tr v-for="(shop,index) in shoplist" :key="index">
           <td>{{ shop.title }}</td>
           <td>{{ shop.price }}</td>
           <td>{{ shop.inventory }}</td>
           <td>
-            <button class="btn btn-success" @click="addToCart(shop)">加入购物车</button>
+            <button class="btn btn-success" @click="addToCart(shop, index)">加入购物车</button>
           </td>
         </tr>
       </tbody>

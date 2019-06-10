@@ -35,7 +35,7 @@
         // cartProducts: []
       }
     },
-    computed: {  //引入cart.js中的cartProduct
+    computed: {  //引入cart.js中的cartProducts
       ...mapGetters(['cartProducts'])
     },
     methods: {

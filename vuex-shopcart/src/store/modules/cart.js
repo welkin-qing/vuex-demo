@@ -21,10 +21,11 @@ const  getters = {
     return state.added.map(({id, num}) => {
       let product = state.shop_list.find( n => n.id == id)
       return {
-        ...product,
-        num
+        ...product, //  取出参数对象product中所有可遍历属性，拷贝到当前对象中 == object.assign(目标对象，源对象) 后面的会覆盖前面的
+        num  //数量
       }
     })
+    //console.log(state)
   },
 
   //计算总价
@@ -48,6 +49,7 @@ const  getters = {
 
 const actions = {
   addToCart({commit}, product){  //编写在product.vue中的点击button时加入购物车方法
+    //console.log(index)
     commit('add', {  //add为传递时的方法名，传递id,余量
       id: product.id,
       yl: product.inventory
@@ -67,31 +69,57 @@ const actions = {
 
 const mutations = {
   //add 添加到购物车时的操作
-  add(state, {id,yl}) {
-    //state中已经定义了一个数组added，用来存放已经添加到购物车的商品
-    if (yl > 0) {
-      yl--;
+  // add(state, {id,yl}) {
+  //   //state中已经定义了一个数组added，用来存放已经添加到购物车的商品
+  //   if (yl > 0) {
+  //     yl--;
       
-      let record = state.added.find(n => n.id == id);
-      //console.log(record.id)
-      if (!record) {
+  //     let record = state.added.find(n => n.id == id);
+  //     if (!record) {
+  //       state.added.push({
+  //         id,
+  //         yl: 1,
+  //         num: 1
+  //       })
+  //     } else {
+  //       record.num++
+  //       record.yl++
+  //      // console.log(yl)
+  //     }
+  //   } else {
+  //     alert('余量不足')
+  //   }
+  //   // console.log(record, state.added)
+  // },
+  add(state, {id, yl}){
+    let product = state.shop_list.find( n => n.id == id)
+    //console.log(product.title)
+    //对余量进行判断
+    if(yl>0){
+      yl --;
+      // 设置一个记录
+      product.inventory = yl
+      let record = state.added.find(n => n.id == id)
+      if(!record){  //如果在这个数组中没有这个商品，则需要初始化
         state.added.push({
           id,
-          yl: 1,
-          num: 1
+          num: 1,
+          yl
         })
-      } else {
+      }else{
         record.num++
-       // rocord.yl--
+        yl
       }
-    } else {
+    }else{
       alert('余量不足')
     }
-    // console.info(record, state.added)
   },
   //清空
   clear(state) {
+    //console.log(state.added)
     state.added = [];
+    //console.log(state.shop_list)
+    //state.shop_list = state.shop_list
   },
   //删除
   delete(state, {id}){
