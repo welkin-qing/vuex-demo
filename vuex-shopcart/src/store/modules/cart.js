@@ -1,4 +1,5 @@
 import { totalmem } from "os";
+import { stat } from "fs";
 
 const state = {
   shop_list: [
@@ -93,7 +94,7 @@ const mutations = {
   // },
   add(state, {id, yl}){
     let product = state.shop_list.find( n => n.id == id)
-    //console.log(product.title)
+   //s console.log(product.title)
     //对余量进行判断
     if(yl>0){
       yl --;
@@ -116,17 +117,43 @@ const mutations = {
   },
   //清空
   clear(state) {
-    //console.log(state.added)
-    state.added = [];
-    //console.log(state.shop_list)
-    //state.shop_list = state.shop_list
+    if (state.added.length > 0) {
+      var msg = confirm('确定清空？')
+      if (msg) {
+        let product = state.shop_list
+        let added = state.added
+        // console.log(state.added)
+        for (let i = 0; i < product.length; i++) {
+          for (let j = 0; j < added.length; j++) {
+            if (product[i].id == added[j].id) {
+              product[i].inventory = product[i].inventory + added[j].num
+            }
+          }
+        }
+        // console.log(product)
+        //将已选商品列表清空  
+        state.added = [];
+        // 将产品列表复原
+        state.shop_list = product;
+      } else {
+        return false;
+      }
+    } else {
+      alert('购物车为空！')
+    }
   },
   //删除
   delete(state, {id}){
+    
+    let product = state.shop_list.find( n => n.id == id)
+    //console.log(product)
     state.added.forEach((n ,i) => {
-      if(n.id == id)[
+      if(n.id == id){
+        //console.log(id);
+        //console.log(product.title)
+        product.inventory = product.inventory + state.added[i].num
         state.added.splice(i,1)
-      ]
+    }
     })
   }
 }

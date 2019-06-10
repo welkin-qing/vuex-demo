@@ -9,7 +9,7 @@
         总价：
         <strong>{{ totalPrice }}</strong>
       </div>
-      <div class="item btn btn-danger" @click="clearAll">清空购物车</div>
+      <div class="item btn btn-danger" @click="clearAll()">清空购物车</div>
     </div>
   </div>
 </template>
