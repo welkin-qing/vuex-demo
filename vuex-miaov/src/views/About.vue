@@ -3,9 +3,9 @@
     <h1>This is an about page</h1>
     <div id="nav">
       <!-- <router-link :to='{name: "work"}'></router-link> |  -->
-      <router-link to="/about">work</router-link> |
-      <router-link to="/about/study">study</router-link> |
-      <router-link to="/about/hobby">hobby</router-link>
+      <router-link event="mouseover" to="/about">work</router-link> |
+      <router-link event="mouseover" to="/about/study">study</router-link> |
+      <router-link event="mouseover" to="/about/hobby">hobby</router-link>
     </div>
     <router-view></router-view>
   </div>

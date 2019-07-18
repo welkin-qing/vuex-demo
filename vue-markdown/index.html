@@ -1,0 +1,93 @@
+<!-- <!DOCTYPE html> -->
+<!-- DOCTYPE中断flex布局 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>markdown-page</title>
+  <link rel="stylesheet" href="public/css/icon.css">
+  <link rel="stylesheet" href="public/css/main.css">
+
+</head>
+<body>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <!-- 添加marked库 -->
+  <script src="node_modules/marked/marked.min.js"></script>
+  <!-- 添加momentjs -->
+  <script src="node_modules//moment/moment.js"></script>
+
+  <div id="notebook">
+    <!-- <p>{{ selectedId }}</p> -->
+    <!-- 笔记列表 -->
+    <aside class="side-bar">
+      <!-- 工具栏 -->
+      <div class="toolbar">
+        <!-- 添加笔记的按钮 -->
+        <button :title="addButtonTitle" v-on:click="addNote"><i class="material-icons">add</i>Add note</button>
+      </div>
+      <!-- 显示笔记列表 -->
+      <div class="notes">
+        <div 
+        class="note" 
+        v-for="note of sortedNotes" 
+        @click="selectNote(note)"
+        :class="{ selected: note === selectedNote}"><i class="icon material-icons" v-if="note.favorite">star</i>{{ note.title }}</div>
+      </div>
+    </aside>
+
+    <!-- 主面板 -->
+    <!-- 因为selectedId为null 会引起程序崩溃，所以使用v-if进行渲染 -->
+    <template v-if="selectedNote">
+      <section class="main">
+        <!-- 工具栏 -->
+        <div class="toolbar">
+          <!-- 重命名笔记 -->
+          <input v-model="selectedNote.title" placeholder="Note title">
+          <!-- 收藏笔记 -->
+          <button @click="favoriteNote" title="Favorite note"><i class="material-icons">{{ selectedNote.favorite ? 'star' : 'star_border' }}</i></button>
+          <!-- 删除笔记 -->
+          <button @click="removeNote" title="Remove note"><i class="material-icons">delete</i></button>
+        </div>
+        <textarea v-model="selectedNote.content"></textarea>
+        <!-- 状态栏 -->
+        <div class="toolbar status-bar">
+          <span class="date">
+            <span class="label">Created</span>
+            <span>{{ selectedNote.created | date }}</span>
+          </span>
+          <!-- 行数 -->
+          <span class="lines">
+            <span class="label">Lines</span>
+            <span class="value">{{ linesCount }}</span>
+          </span>
+          <!-- 字数 -->
+          <span class="words">
+            <span class="label">Words</span>
+            <span class="value">{{ wordsCount }}</span>
+          </span>
+          <!-- 字符数 -->
+          <span class="characters">
+            <span class="label">Characters</span>
+            <span class="value">{{ charactersCount }}</span>
+          </span>
+        </div>
+      </section>
+    
+      <!-- 预览面板 -->
+      <!-- 在这里不应该使用直接显示出来，因为显示出来的是html字符串 -->
+      <!-- <aside class="preview">
+                {{ notePreview }}
+              </aside> -->
+      <aside class="preview" v-html="notePreview"></aside>
+    </template>
+  </div>
+
+
+  <script src="public/js/main.js"></script>
+  <script>
+  // const html = marked('**Bold** *Italic* [link] (http://vuejs.org/)')
+  // console.log(html)
+  </script>
+</body>
+</html>
