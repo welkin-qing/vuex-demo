@@ -22,6 +22,12 @@ vue的一些小demo，实现了一些基本功能
 3. 实现同类物品批量删除的功能
 4. 实现清空购物车的功能
 
+## vue-markdown
+markdownNote by Vue项目实战
+1. 复习了一遍vue基本知识，以及指令的操作
+2. 完成了markdownNote的设计和保存
+3. 扎实了字体图标的使用
+
 ## jedate (扩展)
 1. 使用jadate.js 设置input选择日期框
 2. 使用format 可以设置精确到秒的日期
