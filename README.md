@@ -28,6 +28,10 @@ markdownNote by Vue项目实战
 2. 完成了markdownNote的设计和保存
 3. 扎实了字体图标的使用
 
+## vue-game
+game by vue项目实战
+1. 使用vue相关知识完成了一个基本游戏
+项目待完成。。。
 ## jedate (扩展)
 1. 使用jadate.js 设置input选择日期框
 2. 使用format 可以设置精确到秒的日期
