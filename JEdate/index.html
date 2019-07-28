@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+   	<meta charset="UTF-8">
+   	<title></title>
+   	<script  src="public/jedate.js"></script>
+   </head>
+
+   <body>
+   	<input  type="text" class="form-control input-medium" placeholder="开始时间" name="" id="beginTime1" />
+   	<input  type="text" class="form-control input-medium" placeholder="结束时间" name="" id="endTime1" /> 
+   	
+   </body>
+   <script type="text/javascript">
+   	jeDate({
+   		dateCell: "#beginTime1",
+   		//format: "YYYY-MM-DD", //控制是否显示小时
+       format: "YYYY-MM-DD hh:mm:ss", //控制是否显示小时
+       isTime: true
+   	});
+   	jeDate({
+   		dateCell: "#endTime1",
+   		format: "YYYY-MM-DD", //控制是否显示小时
+   	});
+   </script>
+
+</html>
