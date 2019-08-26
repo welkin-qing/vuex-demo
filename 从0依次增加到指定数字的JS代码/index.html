@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>从0依次增加到指定数字的JS代码</title>
+<style>
+.number{
+  width: 100px;
+  height: 100px;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+  text-align: center;
+}
+.inner_num{
+  line-height: 100px;
+  font-size: 35px;
+  color: white;
+}
+/* @keyframes changecolor{
+  0%{
+    background:#f2f2f2;
+  }
+  25%{
+    background:yellow;
+  }
+  
+  50%{
+    background:orange;
+  }
+  100%{
+    background: red;
+  }
+}
+div {
+  animation: changecolor 2s ease-out .2s;
+} */
+</style>
+</head>
+
+<body>
+<div class="number" id="change_color">
+  <span class="inner_num" id="fwqynum">0</span>
+</div>
+<button id="start_btn">start</button>
+<!-- <span id="snzcnum">0</span>
+<span id="flfwnum">0</span> -->
+
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/jquery.animate-colors.js"></script>
+<script src="js/jq-color.js"></script>
+<script src="js/number.js"></script>
+<script>
+// $('#change_color').animate({'background-color':'#ff0000','color':'#000000'});
+
+
+// setInterval(function() { 
+ 
+//   var num = Math.floor(Math.random() * 100).toString(16); 
+//   //console.log(num)
+//   var str = '#'+num
+//   console.log(str)
+//   $('#change_color').css("background-color", str)
+// }, 400)
+
+// jQuery.Color.fn.contrastColor = function() {
+// 	var r = this._rgba[0], g = this._rgba[1], b = this._rgba[2];
+// 	return (((r*299)+(g*587)+(b*144))/1000) >= 131.5 ? "black" : "white";
+// };
+
+//js实现颜色变化
+
+    $('#start_btn').click(function(){
+      $("#fwqynum").prop('number',0).animateNumber({number:20},2000);
+        $('#change_color').animate({
+          "background-color": "green"
+        }, 2000);
+    });
+
+
+</script>
+</body>
+</html>

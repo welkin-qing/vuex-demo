@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>实现方块颜色的渐变</title>
+    <style>
+        #div1{
+            height: 100px;
+            width: 100px;
+            background: rgb(0,0,255);
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body bgcolor="#ffffff" onLoad="BgColor()">
+    <div id="div1" ></div>
+</body>
+<script language="javascript">
+    // var timer = setInterval("zoom()",500);
+    // var div = document.getElementById("div1");
+    // var timer;
+    // var color = 0x000000;
+    // function zoom(){
+    //     if(color.toString(16) >= 0xFFFFFF){
+    //         clearTimeout(timer);
+    //     }
+    //     color = color + 0x32;
+    //     div.style.background = "#" + color.toString(16);
+    // }
+    function BgColor()
+{
+var x = 0, step = 1
+while( x <= 0xffffff)
+        {
+document.bgColor = x
+x += step
+step <<= 8
+if( step >= 0x1000000) step = 1
+}
+}
+BgColor()
+</script>
+</html>
