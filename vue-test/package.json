@@ -6,7 +6,7 @@
   "dependencies": {
     "jquery": "^3.4.1",
     "vue": "^2.6.10",
-    "webpack": "^4.31.0"
+    "webpack": "^5.75.0"
   },
   "devDependencies": {},
   "scripts": {
